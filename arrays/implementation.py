@@ -1,6 +1,6 @@
 import ctypes
 
-# TODO  insert(index, item), delete(index), remove(item), find(item)
+# TODO  remove(item)
 
 
 class DynamicArray:
@@ -42,3 +42,23 @@ class DynamicArray:
         if self.length_of_array == 0:
             raise IndexError("cannot pop empty array")
         return self.elements[self.length_of_array - 1]
+
+    def find(self, value):
+        for i in range(0, self.length_of_array):
+            if self.elements[i] == value:
+                return i
+
+    def remove(self, value):
+        copy_of_elements = self.make_array(self.length_of_array -1)
+        index_to_remove = self.find(value)
+
+        for i in range(0, self.length_of_array):
+            if i == index_to_remove:
+                pass
+            elif i > index_to_remove:
+                print(self.elements[i])
+
+                copy_of_elements[i-1] = self.elements[i]
+            else:
+                copy_of_elements[i] = self.elements[i]
+        self.elements = copy_of_elements
