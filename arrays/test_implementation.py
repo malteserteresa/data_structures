@@ -15,16 +15,20 @@ def test_capacity():
     assert empty.initial_capacity == 3
     assert multiple_elements.initial_capacity == 3
 
+
 def test_size():
     assert empty.size() == 0
     assert multiple_elements.size() == 4
+
 
 def test_is_empty():
     assert empty.is_empty() == True
     assert multiple_elements.is_empty() == False
 
+
 def test_add():
     assert multiple_elements.size() == 4
+
 
 def test_getitems():
     assert multiple_elements[0] == 1.0
@@ -35,6 +39,7 @@ def test_getitems():
     with pytest.raises(IndexError) as ie:
         multiple_elements[5]
     assert ie.value.args[0] == "i is out of bounds"
+
 
 def test_pop():
     with pytest.raises(IndexError) as ie:

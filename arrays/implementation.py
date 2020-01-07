@@ -1,8 +1,9 @@
 import ctypes
+
 # TODO  insert(index, item), delete(index), remove(item), find(item)
 
-class DynamicArray:
 
+class DynamicArray:
     def __init__(self):
         self.length_of_array = 0
         self.initial_capacity = 3
@@ -18,7 +19,7 @@ class DynamicArray:
         return True if self.length_of_array == 0 else False
 
     def append(self, value):
-        if len(self.elements)  == self.length_of_array:
+        if len(self.elements) == self.length_of_array:
             self._resize()
 
         self.elements[self.length_of_array] = value
@@ -34,12 +35,10 @@ class DynamicArray:
 
     def __getitem__(self, i):
         if not 0 <= i < self.length_of_array:
-            raise IndexError('i is out of bounds')
+            raise IndexError("i is out of bounds")
         return self.elements[i]
 
     def pop(self):
         if self.length_of_array == 0:
-            raise IndexError('cannot pop empty array')
-        return self.elements[self.length_of_array-1]
-
-
+            raise IndexError("cannot pop empty array")
+        return self.elements[self.length_of_array - 1]
