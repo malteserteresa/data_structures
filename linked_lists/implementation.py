@@ -42,7 +42,7 @@ class LinkedList:
     def pop_back(self):
         head = self.head
         while head.next != None:
-            previous = self.head
+            previous = head
             head = head.next
 
         previous.next = None
@@ -52,9 +52,12 @@ class LinkedList:
 
     def push_back(self, value):
         head = self.head
-        new_node = Node(value, None)
-        while head.next != None:
-            head = head.next
-
-        head.next = new_node
-        self.size += 1
+        if head:
+            new_node = Node(value, None)
+            while head.next != None:
+                head = head.next
+            head.next = new_node
+            self.size += 1
+        else:
+            self.head = Node(value, None)
+            self.size += 1

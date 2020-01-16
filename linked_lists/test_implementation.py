@@ -1,6 +1,8 @@
 from linked_lists.implementation import LinkedList
 from linked_lists.implementation import Node
 
+# TODO edge cases, empty list, huge list, combine classes
+
 node = Node(3, Node(5, None))
 
 
@@ -14,43 +16,59 @@ def test_get_value():
     assert node.next.value == 5
 
 
-empty = LinkedList()
-filled = LinkedList()
-filled.push_front(2)
-filled.push_front(1)
-filled.push_front(5)
-
-
-def test_size():
-    assert empty.size == 0
-
-
-def test_is_empty():
-    assert empty.is_empty() == True
-
-
 def test_push_front():
-    assert filled[0].value == 5
-    assert filled[1].value == 1
-    assert filled[2].value == 2
-    assert filled.size == 3
+    ll = LinkedList()
+    size = 3
+    n = 3
+    for _ in range(size):
+        ll.push_front(n)
+        n += 3
+
+    assert ll.size == size
+    assert ll[0].value == size * 3
+    assert ll[1].value == (size - 1) * 3
+    assert ll[2].value == (size - 2) * 3
 
 
 def test_push_back():
-    filled.push_back(10)
-    assert filled[-1].value == 10
-    filled.push_back(11)
-    assert filled[-1].value == 11
+    ll = LinkedList()
+    size = 3
+    n = 5
+
+    for _ in range(size):
+        ll.push_back(n)
+        n += 5
+
+    assert ll.size == size
+    assert ll[-1].value == size * 5
+    assert ll[-2].value == (size - 1) * 5
+    assert ll[-3].value == (size - 2) * 5
 
 
 def test_pop_front():
-    assert filled.size == 5
-    assert filled.pop_front() == 5
-    assert filled.size == 4
-    assert filled.pop_front() == 1
+    ll = create_linked_list()
+
+    assert ll.size == 4
+    assert ll.pop_front() == 1
+    assert ll.pop_front() == 2
+    assert ll.pop_front() == 3
+    assert ll.size == 1
+
+
+def create_linked_list():
+    ll = LinkedList()
+    ll.push_back(1)
+    ll.push_back(2)
+    ll.push_back(3)
+    ll.push_back(4)
+    return ll
 
 
 def test_pop_back():
-    assert filled.size == 3
-    assert filled.pop_back() == 11
-    assert filled.size == 2
+    ll = create_linked_list()
+
+    assert ll.size == 4
+    assert ll.pop_back() == 4
+    assert ll.pop_back() == 3
+    assert ll.pop_back() == 2
+    assert ll.size == 1
