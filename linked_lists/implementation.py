@@ -28,12 +28,10 @@ class LinkedList:
         index = (self.size + index) % self.size
 
         while i < index:
-            self.head = self.head.next
+            head = head.next
             i += 1
 
-        node = self.head
-        self.head = head
-        return node
+        return head
 
     def pop_front(self):
         value = self.head.value
@@ -43,23 +41,20 @@ class LinkedList:
 
     def pop_back(self):
         head = self.head
-        while self.head.next != None:
+        while head.next != None:
             previous = self.head
-            self.head = self.head.next
+            head = head.next
 
         previous.next = None
         self.size -= 1
-        value = self.head.value
-        self.head = head
+        value = head.value
         return value
 
     def push_back(self, value):
         head = self.head
         new_node = Node(value, None)
-        while self.head.next != None:
-            self.head= self.head.next
+        while head.next != None:
+            head = head.next
 
-        self.head.next = new_node
+        head.next = new_node
         self.size += 1
-        self.head = head
-
