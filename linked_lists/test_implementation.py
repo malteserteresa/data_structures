@@ -52,7 +52,8 @@ def test_pop_front():
     assert ll.pop_front() == 1
     assert ll.pop_front() == 2
     assert ll.pop_front() == 3
-    assert ll.size == 1
+    assert ll.pop_front() == 4
+    assert ll.size == 0
 
 
 def create_linked_list():

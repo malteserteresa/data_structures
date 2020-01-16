@@ -25,7 +25,7 @@ class LinkedList:
     def __getitem__(self, index):
         head = self.head
         i = 0
-        index = (self.size + index) % self.size
+        index = 0 if self.size == 0 else (self.size + index) % self.size
 
         while i < index:
             head = head.next
